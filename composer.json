@@ -1,0 +1,48 @@
+{
+	"name": "alanondra/example-php-project",
+	"type": "project",
+	"license": "MIT",
+	"description": "Example PHP Project",
+	"keywords": [
+		"example",
+		"docker"
+	],
+	"authors": [
+		{
+			"name": "Alan Ondra",
+			"email": "alan.ondra@proton.me"
+		}
+	],
+	"support": {
+		"source": "https://github.com/alanondra/example-php-project",
+		"issues": "https://github.com/alanondra/example-php-api-client/issues",
+		"forum": "https://github.com/alanondra/example-php-api-client/discussions",
+		"wiki": "https://github.com/alanondra/example-php-api-client/wiki"
+	},
+	"config": {},
+	"extra": {},
+	"autoload": {
+		"psr-4": {
+			"App\\": "src/"
+		},
+		"files": [
+			"src/constants.php",
+			"src/functions.php"
+		]
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Test\\": "tests/"
+		},
+		"files": [
+			"tests/constants.php",
+			"tests/functions.php"
+		]
+	},
+	"minimum-stability": "stable",
+	"require": {
+		"php": "^8.3",
+		"vlucas/phpdotenv": "^5.6"
+	},
+	"require-dev": {}
+}

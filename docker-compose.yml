@@ -1,0 +1,79 @@
+networks:
+  example:
+    name: example
+    driver: bridge
+
+volumes:
+    example-mariadb-vol:
+        driver: local
+    example-redis-vol:
+        driver: local
+
+services:
+  example.mariadb:
+    container_name: example.mariadb
+    hostname: example-mariadb
+    build:
+      context: .docker/mariadb
+    env_file:
+      - .env
+    environment:
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 'no'
+      MARIADB_ROOT_PASSWORD: '${DB_ROOT_PASSWORD}'
+      MARIADB_ROOT_HOST: '%'
+      MARIADB_DATABASE: '${DB_DATABASE}'
+      MARIADB_ALLOW_EMPTY_PASSWORD: 'no'
+      MARIADB_USER: '${DB_USERNAME}'
+      MARIADB_PASSWORD: '${DB_PASSWORD}'
+    volumes:
+      - 'example-mariadb-vol:/var/lib/mysql'
+    networks:
+      - example
+    ports:
+      - '${PORT_DB:-8036}:3306'
+    healthcheck:
+      test:
+        - CMD
+        - healthcheck.sh
+        - '--connect'
+        - '--innodb_initialized'
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  example.php:
+    depends_on:
+      - example.mariadb
+    container_name: example.php
+    hostname: example-php
+    build:
+      context: .docker/php
+      args:
+        NODE_VERSION: 23.1.0
+        USERNAME: '${HOST_USERNAME:-user}'
+        UID: '${HOST_UID:-1000}'
+        GID: '${HOST_GID:-1000}'
+    env_file:
+      - .env
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    networks:
+      - example
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+  example.nginx:
+    depends_on:
+      - example.php
+    container_name: example.nginx
+    hostname: example-nginx
+    build:
+      context: .docker/nginx
+    env_file:
+      - .env
+    volumes:
+      - ./public:/var/www/public
+    networks:
+      - example
+    ports:
+      - '${PORT_HTTP:-8080}:80'
