@@ -14,6 +14,7 @@
 		}
 	],
 	"support": {
+		"chat": "https://discord.aondra.com",
 		"source": "https://github.com/alanondra/example-php-project",
 		"issues": "https://github.com/alanondra/example-php-api-client/issues",
 		"forum": "https://github.com/alanondra/example-php-api-client/discussions",
