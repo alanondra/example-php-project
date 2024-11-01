@@ -26,7 +26,8 @@ This is meant to serve as an example of a PHP project using Docker.
     - [MariaDB](https://mariadb.org/) as the database
 - Basic configuration via Vance Lucas' [PHP dotenv
 ](https://github.com/vlucas/phpdotenv)
-- Basic layout renderer
+- Basic layout renderer using
+    [output buffering](https://www.php.net/manual/en/book.outcontrol.php)
 - Basic database layer via
     [PDO](https://www.php.net/manual/en/book.pdo.php)
 
