@@ -15,11 +15,17 @@
 	],
 	"support": {
 		"chat": "https://discord.aondra.com",
+		"docs": "file://./docs/index.md",
 		"source": "https://github.com/alanondra/example-php-project",
 		"issues": "https://github.com/alanondra/example-php-api-client/issues",
-		"forum": "https://github.com/alanondra/example-php-api-client/discussions",
-		"wiki": "https://github.com/alanondra/example-php-api-client/wiki"
+		"forum": "https://github.com/alanondra/example-php-api-client/discussions"
 	},
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/alanondra"
+		}
+	],
 	"config": {},
 	"extra": {},
 	"autoload": {
