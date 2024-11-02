@@ -6,8 +6,6 @@ networks:
 volumes:
     example-mariadb-vol:
         driver: local
-    example-redis-vol:
-        driver: local
 
 services:
   example.mariadb:
