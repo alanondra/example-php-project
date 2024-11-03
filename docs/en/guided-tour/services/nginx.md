@@ -57,9 +57,9 @@ in this image.
 
 Here we set up `index.php` as the default handler for 404 errors -
 requests to non-existent resources. We also establish that any requests
-for `.php` and `.phtml` files are forwarded to the PHP service using
-the aforementioned FastCGI protocol. By default, it is configured to
-listen on port `9000`.
+for `.php` files are forwarded to the PHP service using the
+aforementioned FastCGI protocol. By default, it is configured to listen
+on port `9000`.
 
 Included in our configuration are defensive measures against
 [clickjacking](https://owasp.org/www-community/attacks/Clickjacking)
