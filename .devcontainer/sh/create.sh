@@ -11,6 +11,7 @@ sudo apt install -y --no-install-recommends \
     default-mysql-client \
     git \
     keychain \
+    less \
     mariadb-client \
     openssh-client \
     postgresql-client \
